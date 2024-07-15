@@ -19,20 +19,17 @@ jobs:
 
       - name: Make changes
         run: |
-          echo "$(date): Some new content" >> path/to/your/file.txt
+          echo "$(date): Some new content" >> output.txt
 
       - name: Commit changes
         run: |
-          git add path/to/your/file.txt
+          git add output.txt
           git commit -m "Auto commit at $(date)"
           git push
 
       - name: Log commit message
         run: |
           echo "$(date): Auto commit executed" >> commit_log.txt
-
-      - name: Push log file
-        run: |
           git add commit_log.txt
           git commit -m "Update commit log at $(date)"
           git push
