@@ -17,9 +17,14 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Make changes
+      - name: Create or update output.txt
         run: |
-          echo "$(date): Some new content" >> output.txt
+          if [ ! -f output.txt ]; then
+            echo "Creating output.txt"
+            echo "$(date): Some new content" > output.txt
+          else
+            echo "$(date): Some new content" >> output.txt
+          fi
 
       - name: Commit changes
         run: |
