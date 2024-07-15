@@ -9,30 +9,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Git
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Make changes
-      run: |
-        echo "$(date): Some new content" >> commit-log.txt
+      - name: Make changes
+        run: |
+          echo "$(date): Some new content" >> path/to/your/file.txt
 
-    - name: Commit changes
-      run: |
-        git add commit_log.txt
-        git commit -m "Auto commit at $(date)"
-        git push
+      - name: Commit changes
+        run: |
+          git add path/to/your/file.txt
+          git commit -m "Auto commit at $(date)"
+          git push
 
-    - name: Log commit message
-      run: |
-        echo "$(date): Auto commit executed" >> commit_log.txt
+      - name: Log commit message
+        run: |
+          echo "$(date): Auto commit executed" >> commit_log.txt
 
-    - name: Push log file
-      run: |
-        git add commit_log.txt
-        git commit -m "Update commit log at $(date)"
-        git push
+      - name: Push log file
+        run: |
+          git add commit_log.txt
+          git commit -m "Update commit log at $(date)"
+          git push
