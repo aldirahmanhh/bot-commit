@@ -17,8 +17,8 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config --global user.name "aldirahmanhh"
-          git config --global user.email "aldirahmanhh@gmail.com"
+          git config --global user.name "Username"
+          git config --global user.email "email@gmail.com"
 
       - name: Make changes to files (optional)
         run: |
