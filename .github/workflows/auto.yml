@@ -1,0 +1,32 @@
+name: Auto Commit Every 3 Hours
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # Menjadwalkan tugas untuk dijalankan setiap 3 jam
+  push:
+    branches:
+      - main  # Atau ganti dengan nama branch yang sesuai
+  workflow_dispatch:  # Membolehkan menjalankan workflow secara manual
+
+jobs:
+  commit_changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "aldirahmanhh"
+          git config --global user.email "aldirahmanhh@gmail.com"
+
+      - name: Make changes to files (optional)
+        run: |
+          # Misalnya, menambah file baru atau mengubah isi file
+          echo "Commit otomatis pada $(date)" >> auto_commit.txt
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Auto commit on $(date)"
+          git push origin main  # Pastikan untuk mengganti dengan nama branch jika perlu
